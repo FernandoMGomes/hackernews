@@ -15,7 +15,8 @@ var page = 0;
        var news = JSON.parse(this.response);
        printjson(news);
     }else {
-      console.log("error");
+      document.getElementById('list').innerHTML = "<h4 class='text-center'>Server not responding</h4>";
+
     }};
     xhr.open('GET', url, true);
 
