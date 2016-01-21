@@ -1,6 +1,7 @@
-window.onload = function() {
+var page = 0;
+  function calldata(){
     var xhr;
-    var page = 1;
+    page++;
     var url ="http://hn.algolia.com/api/v1/search_by_date?tags=story&page=" + page;
     if (window.XMLHttpRequest){
       //browser recentes
@@ -20,15 +21,15 @@ window.onload = function() {
     xhr.open('GET', url, true);
 
     xhr.send();
-
+}
     function printjson(arr){
       var story="";
       var i;
       for(i = 0; i < arr.hits.length; i++) {
 
-        story += '<a href="#" class="list-group-item"><h4 class="list-group-item-heading">'+ arr.hits[i].title +'</h4></a>';
+        story += '<a href="'+ arr.hits[i].url +'" class="list-group-item col-md-8 col-md-offset-2"><h4 class="list-group-item-heading">'+ arr.hits[i].title +'</h4><p class="list-group-item-text row"><span class="col-md-2">'+ arr.hits[i].points +' points</span><span class="col-md-2">by '+ arr.hits[i].author +'</span><span class="col-md-2">'+ arr.hits[i].num_comments +'comments</span></p></a>';
 
     }
-    document.getElementById('list').innerHTML = story;
-    }
-};
+    document.getElementById('list').innerHTML += story;
+
+  }

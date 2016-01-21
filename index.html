@@ -12,7 +12,7 @@
   <body>
     <div class="container">
 
-    <div class="list-group" id="list">
+    <div class="list-group row" id="list">
 
     </div>
   </div>
@@ -21,5 +21,14 @@
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="main.js"></script>
+    <script>
+    $(document).ready(function () {
+      calldata();
+    $(window).scroll(function () {
+        if ($(window).scrollTop() == ( $(document).height() - $(window).height())) {
+            calldata();
+        }
+    })});
+    </script>
   </body>
 </html>
